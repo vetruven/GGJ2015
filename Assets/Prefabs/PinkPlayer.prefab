@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 119038}
+  pelvis: {fileID: 168432}
   playerName: Player1
   moveSpeed: 50
   turnSpeed: 20
