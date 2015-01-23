@@ -43,8 +43,12 @@ public class Arena : MonoBehaviour
         {
             int idx = Random.Range(0, tiles.Count);
 
-            while (tiles[idx].isTaken)
+            int ppz = 0;
+            while (tiles[idx].isTaken && ppz < 100)
+            {
                 idx = Random.Range(0, tiles.Count);
+                ppz++;
+            }
             
             tiles[idx].PullUp();
         }
