@@ -22,12 +22,11 @@ public class Player : MonoBehaviour
         Vector3 moveDelta = Vector3.zero;
         moveDelta.x = moveSpeed * Input.GetAxis(playerName + "MoveHor");
         moveDelta.z = moveSpeed * Input.GetAxis(playerName + "MoveVert");
-
         rigidbody.MovePosition(rigidbody.position + moveDelta * Time.deltaTime);
         
         Vector3 turretRotateDir = Vector3.zero;
-        turretRotateDir.z = Input.GetAxis(playerName + "ShootHor");
-        turretRotateDir.x = -Input.GetAxis(playerName + "ShootVert");
+        turretRotateDir.x = Input.GetAxis(playerName + "ShootHor");
+        turretRotateDir.z = Input.GetAxis(playerName + "ShootVert");
 
         if (turretRotateDir != Vector3.zero)
         {
