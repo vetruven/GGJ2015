@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         
         Vector3 turretRotateDir = Vector3.zero;
         turretRotateDir.z = Input.GetAxis(playerName + "ShootHor");
-        turretRotateDir.x = Input.GetAxis(playerName + "ShootVert");
+        turretRotateDir.x = -Input.GetAxis(playerName + "ShootVert");
 
         if (turretRotateDir != Vector3.zero)
         {
