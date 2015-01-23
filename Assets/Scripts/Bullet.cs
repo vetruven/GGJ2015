@@ -11,21 +11,31 @@ public class Bullet : MonoBehaviour
 
     void Awake()
     {
-        rigidbody.velocity = transform.forward*speed;
         origPos = transform.position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if(Vector3.Distance(origPos,transform.position) > range)
             Destroy(gameObject);
+
+        RaycastHit rchit;
+        if (Physics.Raycast(transform.position, transform.forward, out rchit, Time.deltaTime*speed))
+        {
+            Hittable h = rchit.transform.GetComponent<Hittable>();
+
+            if (h != null)
+                CollideBullet(rchit.point);
+        }
+        else
+            transform.position = transform.position + transform.forward * Time.deltaTime * speed;
     }
 
-    void OnTriggerEnter(Collider col)
+    void CollideBullet(Vector3 pCollisionPos)
     {
         ParticleSystem hitParticle = ((GameObject)Instantiate(hitParticlePrefab)).GetComponent<ParticleSystem>();
+        hitParticle.transform.position = transform.position;
         hitParticle.transform.forward = (origPos - transform.position).normalized;
-        hitParticle.Play();
         Destroy(gameObject);
     }
 }

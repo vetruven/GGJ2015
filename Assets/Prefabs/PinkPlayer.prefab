@@ -598,8 +598,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -19.5, y: 22.2399998, z: 16.5400009}
-  m_Center: {x: 0, y: 11.1000004, z: 1.77999997}
+  m_Size: {x: -19.5, y: 22.0400009, z: 11.3999996}
+  m_Center: {x: 0, y: 11.1000004, z: .600000024}
 --- !u!95 &9519030
 Animator:
   serializedVersion: 3
@@ -690,7 +690,6 @@ MonoBehaviour:
   muzzles:
   - {fileID: 401810}
   - {fileID: 401808}
-  muzzleFireMargin: 10
   fireCooldown: .200000003
 --- !u!114 &11491386
 MonoBehaviour:
