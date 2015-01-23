@@ -48,13 +48,6 @@ public class Arena : MonoBehaviour
             
             tiles[idx].PullUp();
         }
-
-        StartCoroutine(WaitForEndOfAnimation());
     }
 
-    private IEnumerator WaitForEndOfAnimation()
-    {
-        yield return new WaitForSeconds(3);
-        EventManager.MapGenerationFinish();
-    }
 }

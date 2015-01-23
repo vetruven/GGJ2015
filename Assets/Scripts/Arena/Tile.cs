@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization.Formatters;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 public class Tile : MonoBehaviour
 {

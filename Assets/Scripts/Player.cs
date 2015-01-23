@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         moveDelta.x = Input.GetAxis(playerName + "MoveHor");
         moveDelta.z = Input.GetAxis(playerName + "MoveVert");
 
-        if (moveDelta != Vector3.zero)
+        if (moveDelta != Vector3.zero && !Physics.Raycast(transform.position, moveDelta.normalized, 8))
         {
             rigidbody.MovePosition(rigidbody.position + moveDelta * moveSpeed * Time.deltaTime);
             ChangeRotation(moveDelta, pelvis);

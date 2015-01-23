@@ -21,7 +21,6 @@ public class GameModel : MonoBehaviour {
     void Start()
     {
         StartCoroutine(CountDownIntro());
-        EventManager.OnMapGenerationFinish += HandleMapGenerationFinish;
     }
 
     private IEnumerator CountDownIntro()
@@ -42,11 +41,6 @@ public class GameModel : MonoBehaviour {
 
         Debug.Log("Map Generation Start");
         EventManager.MapGenerationStart();
-    }
-
-    private void HandleMapGenerationFinish()
-    {
-        Debug.Log("Map Generation Finish");
         specialCountCoro = StartCoroutine(StartCountSpecialCreate());
         state = GameState.Game;
     }

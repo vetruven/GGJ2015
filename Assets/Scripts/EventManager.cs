@@ -8,14 +8,12 @@ public class EventManager : MonoBehaviour
     public static Action OnSpecialCreate;
     public static Action OnSpecialKill;
     public static Action OnMapGenerationStart;
-    public static Action OnMapGenerationFinish;
 
     public static void IntroCount(int pCount) { RaiseAction(OnIntroCount, pCount); }
     public static void SpecialCount(int pCount) { RaiseAction(OnSpecialCount, pCount); }
     public static void SpecialCreate() { RaiseAction(OnSpecialCreate); }
     public static void SpecialKill() { RaiseAction(OnSpecialKill); }
     public static void MapGenerationStart() { RaiseAction(OnMapGenerationStart);}
-    public static void MapGenerationFinish() { RaiseAction(OnMapGenerationFinish); }
 
 
 
