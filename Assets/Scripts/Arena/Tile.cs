@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour
 {
     public GameObject cap;
     public Vector2 coord;
-    public float speed = 40;
+    float speed = 40;
     public bool isTaken = false;
     bool isMoving = false;
 

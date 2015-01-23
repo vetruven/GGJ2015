@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3392430}
   - 65: {fileID: 6592430}
   - 23: {fileID: 2392430}
+  - 114: {fileID: 11494808}
   m_Layer: 8
   m_Name: Cap
   m_TagString: Untagged
@@ -111,6 +112,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cap: {fileID: 192428}
   coord: {x: 0, y: 0}
+  isTaken: 0
+  origPos: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+--- !u!114 &11494808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e8f4f100c86504a8e9ae5f769195ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Arena : MonoBehaviour
@@ -38,10 +39,22 @@ public class Arena : MonoBehaviour
 
     private void StartMapGeneration()
     {
-        for (int i = 0; i < 35; i++)
+        for (int i = 0; i < Random.Range(minWallCount, maxWallCount); i++)
         {
-            tiles[i].PullUp();
+            int idx = Random.Range(0, tiles.Count);
 
+            while (tiles[idx].isTaken)
+                idx = Random.Range(0, tiles.Count);
+            
+            tiles[idx].PullUp();
         }
+
+        StartCoroutine(WaitForEndOfAnimation());
+    }
+
+    private IEnumerator WaitForEndOfAnimation()
+    {
+        yield return new WaitForSeconds(3);
+        EventManager.MapGenerationFinish();
     }
 }

@@ -42,14 +42,13 @@ public class GameModel : MonoBehaviour {
 
         Debug.Log("Map Generation Start");
         EventManager.MapGenerationStart();
-
-        EventManager.MapGenerationFinish();
     }
 
     private void HandleMapGenerationFinish()
     {
         Debug.Log("Map Generation Finish");
         specialCountCoro = StartCoroutine(StartCountSpecialCreate());
+        state = GameState.Game;
     }
 
     private IEnumerator StartCountSpecialCreate()
