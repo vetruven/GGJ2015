@@ -8,6 +8,9 @@ public class Arena : MonoBehaviour
     public int height = 20;
     public float tileSize = 20;
 
+    public int minWallCount = 20;
+    public int maxWallCount = 30;
+
     public float crackWidth = 1;
 
     public List<Tile> tiles; 
@@ -15,17 +18,30 @@ public class Arena : MonoBehaviour
 
     void Awake()
     {
-        for (int x = 0; x < width; x++)
-            for (int z = 0; z < height; z++)
+        for (int z = 0; z < height; z++)
+            for (int x = 0; x < width; x++)
                 CreateTile(x, z);
+
+        EventManager.OnMapGenerationStart += StartMapGeneration;
     }
 
     private void CreateTile(int pX, int pZ)
     {
         Tile t = ((GameObject)Instantiate(TilePrefab)).GetComponent<Tile>();
         t.transform.position = transform.position + new Vector3(pX * (crackWidth+tileSize),-0.5f,pZ * (crackWidth+tileSize) );
+        t.origPos = t.transform.position;
         t.coord = new Vector2(pX, pZ);
         t.transform.parent = transform;
         tiles.Add(t);
+    }
+
+
+    private void StartMapGeneration()
+    {
+        for (int i = 0; i < 35; i++)
+        {
+            tiles[i].PullUp();
+
+        }
     }
 }
