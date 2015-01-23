@@ -45,7 +45,6 @@ GameObject:
   - 33: {fileID: 3397648}
   - 23: {fileID: 2397648}
   - 114: {fileID: 11473386}
-  - 50: {fileID: 5090460}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -118,21 +117,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197648}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &5090460
-Rigidbody2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197648}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!114 &11473386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,7 +131,7 @@ MonoBehaviour:
   speed: 200
   range: 400
   origPos: {x: 0, y: 0, z: 0}
-  hitParticlePrefab: {fileID: 0}
+  hitParticlePrefab: {fileID: 121080, guid: 486df0ce5b253d148bb44c3e2a2e973f, type: 2}
 --- !u!198 &19862424
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1210,10 +1194,10 @@ ParticleSystem:
   startDelay: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 1
+  moveWithTransform: 0
   InitialModule:
     enabled: 1
     startLifetime:
