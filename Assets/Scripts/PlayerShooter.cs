@@ -5,8 +5,6 @@ public class PlayerShooter : MonoBehaviour
 {
     public GameObject bullet;
     public List<Transform> muzzles;
-
-    public float muzzleFireMargin = 2;
     public float fireCooldown = 1;
 
     int lastMuzzleShot = 0;

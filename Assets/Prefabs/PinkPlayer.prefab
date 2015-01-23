@@ -417,7 +417,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -18.8400002, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419038}
@@ -690,7 +690,8 @@ MonoBehaviour:
   muzzles:
   - {fileID: 401810}
   - {fileID: 401808}
-  muzzleFireMargin: 2
+  muzzleFireMargin: 10
+  fireCooldown: .200000003
 --- !u!114 &11491386
 MonoBehaviour:
   m_ObjectHideFlags: 1
