@@ -9,7 +9,12 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10;
     public float turnSpeed = 10;
 
-    private CharacterController cc;
+    private PlayerShooter playerShooter;
+
+    void Awake()
+    {
+        playerShooter = GetComponent<PlayerShooter>();
+    }
 
     void FixedUpdate()
     {
@@ -34,7 +39,10 @@ public class Player : MonoBehaviour
         turretRotateDir.z = Input.GetAxis(playerName + "ShootVert");
 
         if (turretRotateDir != Vector3.zero)
+        {
             ChangeRotation(turretRotateDir, turret);
+            playerShooter.QueueShoot();
+        }
     }
 
     private void ChangeRotation(Vector3 lookToVector, GameObject objToRotate)
