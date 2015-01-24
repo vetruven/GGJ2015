@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Enemy : MonoBehaviour {
-
+public class Enemy : MonoBehaviour
+{
+    public float speed = 10f;
+    public float life = 100;
+    public ParticleSystem deathParticleSystem;
 
     private static List<Enemy> _enemies;
     public static List<Enemy> enemies { get { return InitEnemies();} }
@@ -19,12 +22,28 @@ public class Enemy : MonoBehaviour {
         else
             Debug.LogError("No Players To Target");
 
+        EventManager.OnArenaChange += FindBestOpenTile;
         FindBestOpenTile();
     }
+
+
+    public void RemoveLife(float pDamage)
+    {
+        life -= pDamage;
+        if (life < 0)
+            DestroyMonster();
+    }
+
+    private void DestroyMonster()
+    {
+        
+    }
+
 
     void OnDestroy()
     {
         enemies.Remove(this);
+        EventManager.OnArenaChange -= FindBestOpenTile;
     }
 
     private static List<Enemy> InitEnemies()
@@ -34,6 +53,29 @@ public class Enemy : MonoBehaviour {
 
         return _enemies;
     }
+
+    void Update()
+    {
+        if (GameModel.isPlaying)
+        {
+            MoveEnemy();
+            CheckIfCloseToEnemy();
+        }
+    }
+
+    private void MoveEnemy()
+    {
+        if (transform.position != targetTile.transform.position)
+            transform.position = Vector3.MoveTowards(transform.position, targetTile.transform.position,Time.deltaTime*speed);
+        else
+            FindBestOpenTile();
+    }
+
+    private void CheckIfCloseToEnemy()
+    {
+        
+    }
+
 
     void FindBestOpenTile()
     {
@@ -64,17 +106,18 @@ public class Enemy : MonoBehaviour {
         {
             Debug.Log("Physics hit "+rchit.transform.name);
 
-            Tile t = rchit.transform.GetComponent<Tile>();
+            Tile t = rchit.transform.GetComponentInParent<Tile>();
+            if (t == null || t.isRisen) return;
 
-            targetTile = CheckIfCloser(t, targetTile);
+            if (targetTile == null)
+                targetTile = t;
+            else
+                targetTile = CheckIfCloser(t, targetTile);
         }
     }
 
     Tile CheckIfCloser(Tile t1, Tile t2)
     {
-        if (t1 == null || t1.isRisen) return t2;
-        if (t2 == null || t1.isRisen) return t1;
-
         float t1dist = Vector3.Distance(t1.transform.position, target.transform.position);
         float t2dist = Vector3.Distance(t2.transform.position, target.transform.position);
 

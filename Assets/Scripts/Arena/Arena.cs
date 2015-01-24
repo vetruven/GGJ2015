@@ -25,7 +25,8 @@ public class Arena : MonoBehaviour
             for (int x = 0; x < width; x++)
                 CreateTile(x, z);
 
-        EventManager.OnWaveStart += StartMapGeneration;
+        EventManager.OnArenaChange += ChangeArena;
+        EventManager.OnWaveStart += ChangeArena;
         EventManager.OnWaveFinish += Resetmap;
     }
 
@@ -40,6 +41,11 @@ public class Arena : MonoBehaviour
         tiles.Add(t);
     }
 
+    private void ChangeArena()
+    {
+        Resetmap();
+        StartMapGeneration();
+    }
 
     private void StartMapGeneration()
     {

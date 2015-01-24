@@ -20,7 +20,7 @@ public class GameModel : MonoBehaviour {
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P))
-            EventManager.WaveFinish();
+            EventManager.ArenaChange();
     }
 
 
@@ -76,6 +76,7 @@ public class GameModel : MonoBehaviour {
         currWave++;
         Debug.Log("Start Wave = "+currWave);
         EventManager.WaveStart();
+        EventManager.ArenaChange();
         GetComponent<SpecialCounter>().StartSpecialCount();
     }
 }

@@ -6,12 +6,17 @@ public class Bullet : MonoBehaviour
 
     public float speed = 200;
     public float range = 400;
+    public float damageMin = 10;
+    public float damageMax = 15;
+    public float damage;
+
     public Vector3 origPos;
     public GameObject hitParticlePrefab;
 
     void Awake()
     {
         origPos = transform.position;
+        damage = Random.Range(damageMin, damageMax);
     }
 
     void Update()
@@ -25,7 +30,10 @@ public class Bullet : MonoBehaviour
             Hittable h = rchit.transform.GetComponent<Hittable>();
 
             if (h != null)
+            {
+                h.Hit(this);
                 CollideBullet(rchit.point);
+            }
         }
         else
             transform.position = transform.position + transform.forward * Time.deltaTime * speed;

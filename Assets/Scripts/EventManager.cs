@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public static Action OnSpecialKill;
     public static Action OnWaveStart;
     public static Action OnWaveFinish;
+    public static Action OnArenaChange;
 
     public static void OSFMsg(String pMsg) { RaiseAction(OnOSFMsg, pMsg); }
     public static void SpecialCount(int pCount) { RaiseAction(OnSpecialCount, pCount); }
@@ -16,6 +17,7 @@ public class EventManager : MonoBehaviour
     public static void SpecialKill() { RaiseAction(OnSpecialKill); }
     public static void WaveStart() { RaiseAction(OnWaveStart);}
     public static void WaveFinish() { RaiseAction(OnWaveFinish); }
+    public static void ArenaChange() { RaiseAction(OnArenaChange); }
 
     public static void RaiseAction( Action a )
     {
