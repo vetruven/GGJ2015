@@ -51,12 +51,12 @@ public class Tile : MonoBehaviour
         }
 
     }
-
+    /*
     void OnGUI()
     {
         //Handles.Label(transform.position,isEmpty?"-":"#");
     }
-
+    */
     private bool GetIsTaken()
     {
         if (isRisen)
