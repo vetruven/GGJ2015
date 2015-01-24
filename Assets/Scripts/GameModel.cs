@@ -9,11 +9,19 @@ public class GameModel : MonoBehaviour {
 
 
     int introCount = 0;
-    int toSpecialCount = 15;
-    int specialDurationCount = 15;
+    private int timeBetweenWaves = 1;
     private Coroutine specialCountCoro;
 
-
+    void Awake()
+    {
+        gameObject.AddComponent<SpecialCounter>();
+    }
+    
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+            EventManager.WaveFinish();
+    }
 
 
     public static bool isPlaying { get { return state == GameState.Game || state == GameState.WaveEnd; } }
@@ -21,6 +29,7 @@ public class GameModel : MonoBehaviour {
     void Start()
     {
         StartCoroutine(CountDownIntro());
+        EventManager.OnWaveFinish += FinishWave;
     }
 
     private IEnumerator CountDownIntro()
@@ -31,53 +40,42 @@ public class GameModel : MonoBehaviour {
 
         while (lastCount >= 0)
         {
-            EventManager.IntroCount(lastCount);
-            lastCount--;
+            EventManager.OSFMsg(lastCount.ToString());
             Debug.Log("Intro - Count " + lastCount);
+            lastCount--;
             yield return new WaitForSeconds(1);
         }
 
         currWave = 1;
 
         Debug.Log("Map Generation Start");
-        EventManager.MapGenerationStart();
-        specialCountCoro = StartCoroutine(StartCountSpecialCreate());
+        EventManager.WaveStart();
+        GetComponent<SpecialCounter>().StartSpecialCount();
         state = GameState.Game;
     }
 
-    private IEnumerator StartCountSpecialCreate()
+    private void FinishWave()
     {
-        Debug.Log("Start Count to special");
-        int lastCount = toSpecialCount;
-
-        while (lastCount >= 0)
-        {
-            EventManager.IntroCount(lastCount);
-            lastCount--;
-            Debug.Log("Special in "+lastCount);
-            yield return new WaitForSeconds(1);
-        }
-
-        Debug.Log("CreateSpecial");
-        EventManager.SpecialCreate();
-        specialCountCoro = StartCoroutine(StartCountSpecialKill());
+        GetComponent<SpecialCounter>().StopSpecialCount();
+        StartCoroutine(StartCountToNextWave());
     }
 
-    private IEnumerator StartCountSpecialKill()
+    private IEnumerator StartCountToNextWave()
     {
-        Debug.Log("Start Special Life");
-        int lastCount = specialDurationCount;
+        Debug.Log("Start Count To Next Wave");
+        int lastCount = timeBetweenWaves;
 
         while (lastCount >= 0)
         {
-            EventManager.IntroCount(lastCount);
+            EventManager.OSFMsg(lastCount.ToString());
+            Debug.Log("Start Wave in " + lastCount);
             lastCount--;
-            Debug.Log("Start Life "+lastCount);
             yield return new WaitForSeconds(1);
         }
 
-        Debug.Log("Special Kill");
-        EventManager.SpecialKill();
-        specialCountCoro = StartCoroutine(StartCountSpecialCreate());
+        currWave++;
+        Debug.Log("Start Wave = "+currWave);
+        EventManager.WaveStart();
+        GetComponent<SpecialCounter>().StartSpecialCount();
     }
 }

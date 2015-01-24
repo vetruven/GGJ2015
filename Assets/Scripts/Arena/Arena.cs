@@ -23,8 +23,10 @@ public class Arena : MonoBehaviour
             for (int x = 0; x < width; x++)
                 CreateTile(x, z);
 
-        EventManager.OnMapGenerationStart += StartMapGeneration;
+        EventManager.OnWaveStart += StartMapGeneration;
+        EventManager.OnWaveFinish += Resetmap;
     }
+
 
     private void CreateTile(int pX, int pZ)
     {
@@ -44,7 +46,7 @@ public class Arena : MonoBehaviour
             int idx = Random.Range(0, tiles.Count);
 
             int ppz = 0;
-            while (tiles[idx].isTaken && ppz < 100)
+            while (tiles[idx].isEmpty && ppz < 100)
             {
                 idx = Random.Range(0, tiles.Count);
                 ppz++;
@@ -52,6 +54,13 @@ public class Arena : MonoBehaviour
             
             tiles[idx].PullUp();
         }
+    }
+
+
+    private void Resetmap()
+    {
+        foreach (Tile tile in tiles)
+            tile.PullDown();
     }
 
 }
