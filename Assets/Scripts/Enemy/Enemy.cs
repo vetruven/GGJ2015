@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
     public float life = 100;
     public ParticleSystem deathParticleSystem;
+    public Slider lifeSlider;
 
     private static List<Enemy> _enemies;
     public static List<Enemy> enemies { get { return InitEnemies();} }
