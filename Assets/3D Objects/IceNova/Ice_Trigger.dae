@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4.0" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+<asset>
+<contributor><author></author><authoring_tool>Minddesk COLLADA exporter</authoring_tool><comments /><copyright></copyright><source_data /></contributor>
+<created>2015-01-241:53 PM13:53:03:556</created>
+<keywords />
+<modified>2015-01-241:53 PM13:53:03:556</modified>
+<revision />
+<subject />
+<title />
+<unit meter="0.01" />
+</asset>
+<library_images>
+<image id="IceNova_Atlas-image" name="IceNova_Atlas"><init_from>file:///Materials/IceNova_Atlas-tex.png</init_from></image>
+</library_images>
+<library_materials>
+<material id="IceNova_AtlasMaterial" name="IceNova_AtlasMaterial"><instance_effect url="#IceNova_AtlasShader-fx" /></material>
+</library_materials>
+<library_effects>
+<effect id="IceNova_AtlasShader-fx" name="IceNova_AtlasShader"><profile_COMMON><newparam sid="IceNova_Atlas-image-surface"><surface type="2D"><init_from>IceNova_Atlas-image</init_from></surface></newparam><newparam sid="IceNova_Atlas-image-sampler"><sampler2D><source>IceNova_Atlas-image-surface</source><wrap_s>WRAP</wrap_s><wrap_t>WRAP</wrap_t><minfilter>NEAREST</minfilter><magfilter>NEAREST</magfilter></sampler2D></newparam><technique sid="standard"><lambert><ambient><color sid="ambient">0.000000 0.000000 0.000000 1.000000</color></ambient><diffuse><texture texcoord="CHANNEL0" texture="IceNova_Atlas-image-sampler" /></diffuse></lambert></technique></profile_COMMON></effect>
+</library_effects>
+<library_geometries>
+<geometry name="Matrix_6" id="Matrix_6-lib"><mesh>
+<source id="Matrix_6-POSITION"><float_array id="Matrix_6-POSITION-array" count="72">-6.0 2.0 -6.0 -6.0 2.0 6.0 6.0 2.0 6.0 6.0 2.0 -6.0 -6.0 0.0 6.0 -6.0 0.0 -6.0 6.0 0.0 -6.0 6.0 0.0 6.0 -6.0 2.0 -6.0 -6.0 0.0 -6.0 -6.0 0.0 6.0 -6.0 2.0 6.0 6.0 2.0 6.0 6.0 0.0 6.0 6.0 0.0 -6.0 6.0 2.0 -6.0 6.0 2.0 -6.0 6.0 0.0 -6.0 -6.0 0.0 -6.0 -6.0 2.0 -6.0 -6.0 2.0 6.0 -6.0 0.0 6.0 6.0 0.0 6.0 6.0 2.0 6.0 </float_array>
+<technique_common><accessor source="#Matrix_6-POSITION-array" stride="3" count="24"><param name="X" type="float" /><param name="Y" type="float" /><param name="Z" type="float" /></accessor></technique_common></source>
+<source id="Matrix_6-Normal0"><float_array id="Matrix_6-Normal0-array" count="72">0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 </float_array>
+<technique_common><accessor source="#Matrix_6-Normal0-array" stride="3" count="24"><param name="X" type="float" /><param name="Y" type="float" /><param name="Z" type="float" /></accessor></technique_common></source>
+<source id="Matrix_6-UV0"><float_array id="Matrix_6-UV0-array" count="48">0.117188 0.203125 0.117188 0.015625 0.210938 0.015625 0.210938 0.203125 0.007813 0.203125 0.007813 0.015625 0.101563 0.015625 0.101563 0.203125 0.296875 0.359375 0.296875 0.328125 0.390625 0.328125 0.390625 0.359375 0.1875 0.359375 0.1875 0.328125 0.28125 0.328125 0.28125 0.359375 0.078125 0.359375 0.078125 0.328125 0.171875 0.328125 0.171875 0.359375 0.40625 0.359375 0.40625 0.328125 0.5 0.328125 0.5 0.359375 </float_array>
+<technique_common><accessor source="#Matrix_6-UV0-array" stride="2" count="24"><param name="S" type="float" /><param name="T" type="float" /></accessor></technique_common></source>
+<source id="Matrix_6-VERTEX_COLOR0"><float_array id="Matrix_6-VERTEX_COLOR0-array" count="4">1.0 1.0 1.0 1.0 </float_array>
+<technique_common><accessor source="#Matrix_6-VERTEX_COLOR0-array" stride="4" count="1"><param name="R" type="float" /><param name="G" type="float" /><param name="B" type="float" /><param name="A" type="float" /></accessor></technique_common></source>
+<vertices id="Matrix_6-VERTEX"><input semantic="POSITION" source="#Matrix_6-POSITION" /></vertices>
+<polylist material="IceNova_AtlasMaterial" count="6"><input offset="0" semantic="VERTEX" source="#Matrix_6-VERTEX" /><input offset="1" semantic="NORMAL" source="#Matrix_6-Normal0" /><input offset="2" semantic="TEXCOORD" source="#Matrix_6-UV0" /><input offset="3" semantic="COLOR" source="#Matrix_6-VERTEX_COLOR0" />
+<vcount>4 4 4 4 4 4 </vcount>
+<p>0 0 0 0 1 1 1 0 2 2 2 0 3 3 3 0 4 4 4 0 5 5 5 0 6 6 6 0 7 7 7 0 8 8 8 0 9 9 9 0 10 10 10 0 11 11 11 0 12 12 12 0 13 13 13 0 14 14 14 0 15 15 15 0 16 16 16 0 17 17 17 0 18 18 18 0 19 19 19 0 20 20 20 0 21 21 21 0 22 22 22 0 23 23 23 0 </p>
+</polylist>
+</mesh></geometry>
+</library_geometries>
+<library_visual_scenes>
+<visual_scene id="/Users/benmenashe/Documents/Qubicle2/IceNova/IceNovaScene" name="/Users/benmenashe/Documents/Qubicle2/IceNova/IceNovaScene">
+<node sid="Matrix_6" id="Matrix_6" name="Matrix_6">
+<translate sid="translate">0.500000 0.500000 0.500000 </translate>
+<instance_geometry url="#Matrix_6-lib"><bind_material><technique_common><instance_material symbol="IceNova_AtlasMaterial" target="#IceNova_AtlasMaterial" /></technique_common></bind_material></instance_geometry>
+</node>
+</visual_scene>
+</library_visual_scenes>
+<scene><instance_visual_scene name="" sid="" url="#/Users/benmenashe/Documents/Qubicle2/IceNova/IceNovaScene" /></scene>
+</COLLADA>

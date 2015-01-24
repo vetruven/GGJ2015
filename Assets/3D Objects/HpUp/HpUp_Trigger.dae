@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4.0" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+<asset>
+<contributor><author></author><authoring_tool>Minddesk COLLADA exporter</authoring_tool><comments /><copyright></copyright><source_data /></contributor>
+<created>2015-01-241:49 PM13:49:54:539</created>
+<keywords />
+<modified>2015-01-241:49 PM13:49:54:539</modified>
+<revision />
+<subject />
+<title />
+<unit meter="0.01" />
+</asset>
+<library_images>
+<image id="HpUp_Atlas-image" name="HpUp_Atlas"><init_from>file:///Materials/HpUp_Atlas-tex.png</init_from></image>
+</library_images>
+<library_materials>
+<material id="HpUp_AtlasMaterial" name="HpUp_AtlasMaterial"><instance_effect url="#HpUp_AtlasShader-fx" /></material>
+</library_materials>
+<library_effects>
+<effect id="HpUp_AtlasShader-fx" name="HpUp_AtlasShader"><profile_COMMON><newparam sid="HpUp_Atlas-image-surface"><surface type="2D"><init_from>HpUp_Atlas-image</init_from></surface></newparam><newparam sid="HpUp_Atlas-image-sampler"><sampler2D><source>HpUp_Atlas-image-surface</source><wrap_s>WRAP</wrap_s><wrap_t>WRAP</wrap_t><minfilter>NEAREST</minfilter><magfilter>NEAREST</magfilter></sampler2D></newparam><technique sid="standard"><lambert><ambient><color sid="ambient">0.000000 0.000000 0.000000 1.000000</color></ambient><diffuse><texture texcoord="CHANNEL0" texture="HpUp_Atlas-image-sampler" /></diffuse></lambert></technique></profile_COMMON></effect>
+</library_effects>
+<library_geometries>
+<geometry name="Matrix_2" id="Matrix_2-lib"><mesh>
+<source id="Matrix_2-POSITION"><float_array id="Matrix_2-POSITION-array" count="72">-6.0 2.0 -6.0 -6.0 2.0 6.0 6.0 2.0 6.0 6.0 2.0 -6.0 -6.0 0.0 6.0 -6.0 0.0 -6.0 6.0 0.0 -6.0 6.0 0.0 6.0 -6.0 2.0 -6.0 -6.0 0.0 -6.0 -6.0 0.0 6.0 -6.0 2.0 6.0 6.0 2.0 6.0 6.0 0.0 6.0 6.0 0.0 -6.0 6.0 2.0 -6.0 6.0 2.0 -6.0 6.0 0.0 -6.0 -6.0 0.0 -6.0 -6.0 2.0 -6.0 -6.0 2.0 6.0 -6.0 0.0 6.0 6.0 0.0 6.0 6.0 2.0 6.0 </float_array>
+<technique_common><accessor source="#Matrix_2-POSITION-array" stride="3" count="24"><param name="X" type="float" /><param name="Y" type="float" /><param name="Z" type="float" /></accessor></technique_common></source>
+<source id="Matrix_2-Normal0"><float_array id="Matrix_2-Normal0-array" count="72">0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 </float_array>
+<technique_common><accessor source="#Matrix_2-Normal0-array" stride="3" count="24"><param name="X" type="float" /><param name="Y" type="float" /><param name="Z" type="float" /></accessor></technique_common></source>
+<source id="Matrix_2-UV0"><float_array id="Matrix_2-UV0-array" count="48">0.117188 0.203125 0.117188 0.015625 0.210938 0.015625 0.210938 0.203125 0.007813 0.203125 0.007813 0.015625 0.101563 0.015625 0.101563 0.203125 0.867188 0.265625 0.867188 0.234375 0.960938 0.234375 0.960938 0.265625 0.757813 0.265625 0.757813 0.234375 0.851563 0.234375 0.851563 0.265625 0.117188 0.359375 0.117188 0.328125 0.210938 0.328125 0.210938 0.359375 0.007813 0.359375 0.007813 0.328125 0.101563 0.328125 0.101563 0.359375 </float_array>
+<technique_common><accessor source="#Matrix_2-UV0-array" stride="2" count="24"><param name="S" type="float" /><param name="T" type="float" /></accessor></technique_common></source>
+<source id="Matrix_2-VERTEX_COLOR0"><float_array id="Matrix_2-VERTEX_COLOR0-array" count="4">1.0 1.0 1.0 1.0 </float_array>
+<technique_common><accessor source="#Matrix_2-VERTEX_COLOR0-array" stride="4" count="1"><param name="R" type="float" /><param name="G" type="float" /><param name="B" type="float" /><param name="A" type="float" /></accessor></technique_common></source>
+<vertices id="Matrix_2-VERTEX"><input semantic="POSITION" source="#Matrix_2-POSITION" /></vertices>
+<polylist material="HpUp_AtlasMaterial" count="6"><input offset="0" semantic="VERTEX" source="#Matrix_2-VERTEX" /><input offset="1" semantic="NORMAL" source="#Matrix_2-Normal0" /><input offset="2" semantic="TEXCOORD" source="#Matrix_2-UV0" /><input offset="3" semantic="COLOR" source="#Matrix_2-VERTEX_COLOR0" />
+<vcount>4 4 4 4 4 4 </vcount>
+<p>0 0 0 0 1 1 1 0 2 2 2 0 3 3 3 0 4 4 4 0 5 5 5 0 6 6 6 0 7 7 7 0 8 8 8 0 9 9 9 0 10 10 10 0 11 11 11 0 12 12 12 0 13 13 13 0 14 14 14 0 15 15 15 0 16 16 16 0 17 17 17 0 18 18 18 0 19 19 19 0 20 20 20 0 21 21 21 0 22 22 22 0 23 23 23 0 </p>
+</polylist>
+</mesh></geometry>
+</library_geometries>
+<library_visual_scenes>
+<visual_scene id="/Users/benmenashe/Documents/Qubicle2/HpUp/HpUpScene" name="/Users/benmenashe/Documents/Qubicle2/HpUp/HpUpScene">
+<node sid="Matrix_2" id="Matrix_2" name="Matrix_2">
+<translate sid="translate">0.500000 0.500000 0.500000 </translate>
+<instance_geometry url="#Matrix_2-lib"><bind_material><technique_common><instance_material symbol="HpUp_AtlasMaterial" target="#HpUp_AtlasMaterial" /></technique_common></bind_material></instance_geometry>
+</node>
+</visual_scene>
+</library_visual_scenes>
+<scene><instance_visual_scene name="" sid="" url="#/Users/benmenashe/Documents/Qubicle2/HpUp/HpUpScene" /></scene>
+</COLLADA>
