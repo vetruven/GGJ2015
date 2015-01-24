@@ -676,7 +676,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
+  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -810,7 +810,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
+  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 881238888}
   pelvis: {fileID: 1050326060}
-  deathParticleSystem: {fileID: 154392, guid: 5ec947e7ca26d2943b74058882148417, type: 2}
+  deathParticleSystem: {fileID: 0}
   slider: {fileID: 1663529345}
   playerName: Player2
   moveSpeed: 50
@@ -1745,7 +1745,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
+  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1832,7 +1832,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
+  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2037,6 +2037,10 @@ Prefab:
     - target: {fileID: 403360, guid: 319b62be178a24975a5609dcbe6190ac, type: 2}
       propertyPath: m_RootOrder
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403364, guid: 319b62be178a24975a5609dcbe6190ac, type: 2}
+      propertyPath: deathParticleSystem
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 319b62be178a24975a5609dcbe6190ac, type: 2}
