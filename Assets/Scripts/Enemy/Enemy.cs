@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
         GetComponentInChildren<MeshRenderer>().enabled = false;
         deathParticleSystem.Play();
         isDead = true;
+        EventManager.EnemyExplode(transform.position);
 
         enemies.Remove(this);
         collider.enabled = false;
@@ -70,7 +71,7 @@ public class Enemy : MonoBehaviour
         if (GameModel.isPlaying && !isDead)
         {
             MoveEnemy();
-            CheckIfCloseToEnemy();
+            CheckIfCloseToPlayers();
         }
 
         if(isDead && !deathParticleSystem.isPlaying)
@@ -85,9 +86,11 @@ public class Enemy : MonoBehaviour
             FindBestOpenTile();
     }
 
-    private void CheckIfCloseToEnemy()
+    private void CheckIfCloseToPlayers()
     {
-        
+        foreach (Player p in Player.players)
+            if(Vector3.Distance(transform.position, p.transform.position) < 15)
+                DestroyMonster();
     }
 
 
