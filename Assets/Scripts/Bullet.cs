@@ -34,9 +34,16 @@ public class Bullet : MonoBehaviour
                 h.Hit(this);
                 CollideBullet(rchit.point);
             }
+            else
+                MoveBullet(); 
         }
         else
-            transform.position = transform.position + transform.forward * Time.deltaTime * speed;
+            MoveBullet();
+    }
+
+    private void MoveBullet()
+    {
+        transform.position = transform.position + transform.forward*Time.deltaTime*speed;
     }
 
     void CollideBullet(Vector3 pCollisionPos)
