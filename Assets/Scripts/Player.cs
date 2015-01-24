@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public GameObject turret;
     public GameObject pelvis;
+    public GameObject deathParticleSystem;
     public Slider slider;
 
 
@@ -40,6 +41,12 @@ public class Player : MonoBehaviour
 
         if (dist > 15 && dist <= 25)
             life -= pDamage*(25 - dist)/10;
+
+        if (life < 0)
+        {
+            Instantiate(deathParticleSystem, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
         
         slider.value = life / origLife;
     }

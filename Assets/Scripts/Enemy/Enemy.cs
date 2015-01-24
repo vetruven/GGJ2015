@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject graphicsBody;
     public float speed = 10f;
     public float life = 100;
     float origLife = 100;
@@ -50,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     private void DestroyMonster()
     {
-        GetComponentInChildren<MeshRenderer>().enabled = false;
+        graphicsBody.SetActive(false);
         deathParticleSystem.Play();
         isDead = true;
         EventManager.EnemyExplode(transform.position, damage);
@@ -118,7 +119,7 @@ public class Enemy : MonoBehaviour
         CheckTileGoodTomMove(pos);
 
         if (targetTile != null)
-            transform.forward = (targetTile.transform.position - transform.position).normalized;
+            graphicsBody.transform.forward = (targetTile.transform.position - transform.position).normalized;
     }
 
     private void CheckTileGoodTomMove(Vector3 pPos)

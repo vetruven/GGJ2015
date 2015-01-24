@@ -514,8 +514,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913411c257a32934d9f34a92545cdd47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphicsBody: {fileID: 186766}
   speed: 65
   life: 80
+  damage: 30
   deathParticleSystem: {fileID: 19865810}
   lifeSlider: {fileID: 11441592}
   targetTile: {fileID: 0}
