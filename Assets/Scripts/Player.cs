@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -11,9 +12,16 @@ public class Player : MonoBehaviour
 
     private PlayerShooter playerShooter;
 
+    public static List<Player> players; 
+
     void Awake()
     {
         playerShooter = GetComponent<PlayerShooter>();
+
+        if(players == null) 
+            players = new List<Player>();
+
+        players.Add(this);
     }
 
     void FixedUpdate()
@@ -50,5 +58,10 @@ public class Player : MonoBehaviour
         Quaternion lookRot = Quaternion.LookRotation(lookToVector);
         Quaternion newRot = Quaternion.RotateTowards(objToRotate.transform.rotation, lookRot, turnSpeed);
         objToRotate.transform.rotation = newRot;
+    }
+
+    void OnDestroy()
+    {
+        players.Remove(this);
     }
 }

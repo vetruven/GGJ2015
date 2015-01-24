@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public static Action<int> OnIntroCount;
+    public static Action<string> OnOSFMsg;
     public static Action<int> OnSpecialCount;
     public static Action OnSpecialCreate;
     public static Action OnSpecialKill;
-    public static Action OnMapGenerationStart;
+    public static Action OnWaveStart;
+    public static Action OnWaveFinish;
 
-    public static void IntroCount(int pCount) { RaiseAction(OnIntroCount, pCount); }
+    public static void OSFMsg(String pMsg) { RaiseAction(OnOSFMsg, pMsg); }
     public static void SpecialCount(int pCount) { RaiseAction(OnSpecialCount, pCount); }
     public static void SpecialCreate() { RaiseAction(OnSpecialCreate); }
     public static void SpecialKill() { RaiseAction(OnSpecialKill); }
-    public static void MapGenerationStart() { RaiseAction(OnMapGenerationStart);}
-
-
+    public static void WaveStart() { RaiseAction(OnWaveStart);}
+    public static void WaveFinish() { RaiseAction(OnWaveFinish); }
 
     public static void RaiseAction( Action a )
     {
