@@ -103,4 +103,10 @@ public class GameModel : MonoBehaviour {
         EventManager.ArenaChange();
         GetComponent<SpecialCounter>().StartSpecialCount();
     }
+
+    void OnGUI()
+    {
+        if(GUI.Button(new Rect(20,20,100,50),"RESET" ))
+            Application.LoadLevel(0);
+    }
 }
