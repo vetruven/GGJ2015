@@ -8,19 +8,23 @@ public class GameModel : MonoBehaviour {
     public static int currWave = 0;
 
 
-    int introCount = 2;
+    int introCount = 1;
     private int timeBetweenWaves = 1;
     private Coroutine specialCountCoro;
 
     void Awake()
     {
         gameObject.AddComponent<SpecialCounter>();
+        state = GameState.Intro;
     }
     
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P))
             EventManager.ArenaChange();
+
+        if (Input.GetKeyDown(KeyCode.Y))
+            Application.LoadLevel(0);
     }
 
 
@@ -36,10 +40,18 @@ public class GameModel : MonoBehaviour {
         EventManager.OnPlayerExplode += CheckForGameEnd;
     }
 
+    void OnDestroy()
+    {
+        EventManager.OnWaveFinish -= FinishWave;
+        EventManager.OnPlayerExplode -= CheckForGameEnd;
+    }
+
     private void CheckForGameEnd()
     {
         if(Player.players.Count == 0)
             state = GameState.GameEnd;
+
+        Debug.Log("Check for the game Player# == " + Player.players.Count);
     }
 
     private IEnumerator CountDownIntro()

@@ -34,6 +34,13 @@ public class Enemy : MonoBehaviour
         EventManager.OnPlayerExplode += PickANewTarget;
     }
 
+    void OnDestroy()
+    {
+        enemies.Remove(this);
+        EventManager.OnArenaChange -= FindBestOpenTile;
+        EventManager.OnPlayerExplode -= PickANewTarget;
+    }
+
     void PickANewTarget()
     {
         if (Player.players.Count > 0)

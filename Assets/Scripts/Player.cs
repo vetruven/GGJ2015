@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
 
     void OnDestroy()
     {
+        players.Remove(this);
         EventManager.OnEnemyExplode -= RecieveDamage;
     }
 
