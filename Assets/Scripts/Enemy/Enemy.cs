@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
 
         enemies.Add(this);
         EventManager.OnArenaChange += FindBestOpenTile;
+        EventManager.OnPlayerExplode += PickANewTarget;
     }
 
     void PickANewTarget()
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour
         enemies.Remove(this);
         collider.enabled = false;
         EventManager.OnArenaChange -= FindBestOpenTile;
+        EventManager.OnPlayerExplode -= PickANewTarget;
     }
 
     private static List<Enemy> InitEnemies()
@@ -71,7 +73,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (GameModel.isPlaying && !isDead)
+        if (GameModel.isPlaying && !isDead && target != null)
         {
             MoveEnemy();
             CheckIfCloseToPlayers();

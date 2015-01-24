@@ -8,7 +8,7 @@ public class GameModel : MonoBehaviour {
     public static int currWave = 0;
 
 
-    int introCount = 0;
+    int introCount = 2;
     private int timeBetweenWaves = 1;
     private Coroutine specialCountCoro;
 
@@ -49,7 +49,7 @@ public class GameModel : MonoBehaviour {
         currWave = 1;
 
         Debug.Log("Map Generation Start");
-        EventManager.WaveStart();
+        EventManager.GameStart();
         GetComponent<SpecialCounter>().StartSpecialCount();
         state = GameState.Game;
     }

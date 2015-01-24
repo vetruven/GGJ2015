@@ -996,6 +996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 119038}
   pelvis: {fileID: 168432}
+  deathParticleSystem: {fileID: 154392, guid: 5ec947e7ca26d2943b74058882148417, type: 2}
   slider: {fileID: 11419102}
   playerName: Player1
   moveSpeed: 50

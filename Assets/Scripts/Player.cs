@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
         EventManager.OnEnemyExplode += RecieveDamage;
     }
 
+    void OnDestroy()
+    {
+        EventManager.OnEnemyExplode -= RecieveDamage;
+    }
+
     void RecieveDamage(Vector3 pPos, float pDamage)
     {
         float dist = Vector3.Distance(transform.position, pPos);
@@ -45,6 +50,9 @@ public class Player : MonoBehaviour
         if (life < 0)
         {
             Instantiate(deathParticleSystem, transform.position, Quaternion.identity);
+            players.Remove(this);
+
+            EventManager.PlayerExplode();
             Destroy(gameObject);
         }
         
@@ -88,9 +96,4 @@ public class Player : MonoBehaviour
         objToRotate.transform.rotation = newRot;
     }
 
-    void OnDestroy()
-    {
-        players.Remove(this);
-        EventManager.OnEnemyExplode -= RecieveDamage;
-    }
 }
