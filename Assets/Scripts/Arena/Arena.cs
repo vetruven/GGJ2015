@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Arena : MonoBehaviour
@@ -26,7 +25,7 @@ public class Arena : MonoBehaviour
                 CreateTile(x, z);
 
         EventManager.OnArenaChange += ChangeArena;
-        EventManager.OnWaveStart += ChangeArena;
+        EventManager.OnGameStart += ChangeArena;
         EventManager.OnWaveFinish += Resetmap;
     }
 

@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public Player target;
 
     private bool isDead;
+    private bool killME;
 
     void Awake()
     {
@@ -81,6 +82,9 @@ public class Enemy : MonoBehaviour
 
         if(isDead && !deathParticleSystem.isPlaying)
             Destroy(gameObject);
+
+        if(killME)
+            DestroyMonster();
     }
 
     private void MoveEnemy()
@@ -94,8 +98,8 @@ public class Enemy : MonoBehaviour
     private void CheckIfCloseToPlayers()
     {
         foreach (Player p in Player.players)
-            if(Vector3.Distance(transform.position, p.transform.position) < 15)
-                DestroyMonster();
+            if (Vector3.Distance(transform.position, p.transform.position) < 15)
+                killME = true;
     }
 
 
