@@ -104,9 +104,16 @@ public class GameModel : MonoBehaviour {
         GetComponent<SpecialCounter>().StartSpecialCount();
     }
 
+    private bool isTutorial;
     void OnGUI()
     {
         if(GUI.Button(new Rect(20,20,100,50),"RESET" ))
             Application.LoadLevel(0);
+
+        if (GUI.Button(new Rect(20, 80, 50, 30), "HELP"))
+            isTutorial = !isTutorial;
+
+        if(isTutorial)
+            GUI.Label(new Rect(20, 120, 300, 200),"Player1 Controls: WASD and IJKL"+"\n"+"Player2 Controls: ArrowKeys and Numpad 8456");
     }
 }
