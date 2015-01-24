@@ -24,18 +24,9 @@ public class Enemy : MonoBehaviour
         lifeSlider.value = life / origLife;
         PickANewTarget();
         FindBestOpenTile();
-    }
 
-    private void OnEnable()
-    {
         enemies.Add(this);
         EventManager.OnArenaChange += FindBestOpenTile;
-    }
-
-    private void OnDisable()
-    {
-        enemies.Remove(this);
-        EventManager.OnArenaChange -= FindBestOpenTile;
     }
 
     void PickANewTarget()
@@ -50,6 +41,7 @@ public class Enemy : MonoBehaviour
     {
         life -= pDamage;
         lifeSlider.value = life/origLife;
+
         if (life < 0)
             DestroyMonster();
     }
@@ -59,6 +51,10 @@ public class Enemy : MonoBehaviour
         GetComponentInChildren<MeshRenderer>().enabled = false;
         deathParticleSystem.Play();
         isDead = true;
+
+        enemies.Remove(this);
+        collider.enabled = false;
+        EventManager.OnArenaChange -= FindBestOpenTile;
     }
 
     private static List<Enemy> InitEnemies()

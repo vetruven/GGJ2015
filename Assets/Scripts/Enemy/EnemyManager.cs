@@ -8,10 +8,10 @@ public class EnemyManager : MonoBehaviour
 
 	void Awake()
 	{
-	    EventManager.OnWaveStart += WaveStart;
+	    EventManager.OnWaveStart += CreateEnemy;
 	}
 
-    private void WaveStart()
+    private void CreateEnemy()
     {
         Tile t = Arena.GetFreeTile();
         Enemy e = ((GameObject)Instantiate(enemyPrefab, t.transform.position, Quaternion.identity)).GetComponent<Enemy>();
@@ -20,6 +20,12 @@ public class EnemyManager : MonoBehaviour
 
     void OnDestroy()
     {
-        EventManager.OnWaveStart -= WaveStart;
+        EventManager.OnWaveStart -= CreateEnemy;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+            CreateEnemy();
     }
 }
