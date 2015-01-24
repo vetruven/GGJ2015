@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
     public float life = 100;
+    float origLife = 100;
     public ParticleSystem deathParticleSystem;
     public Slider lifeSlider;
 
@@ -15,36 +16,44 @@ public class Enemy : MonoBehaviour
     public Tile targetTile;
     public Player target;
 
+    private bool isDead;
+
     void Awake()
     {
-        enemies.Add(this);
+        origLife = life;
+        lifeSlider.value = life / origLife;
+        PickANewTarget();
+        FindBestOpenTile();
 
-        if(Player.players.Count > 0)
+        enemies.Add(this);
+        EventManager.OnArenaChange += FindBestOpenTile;
+    }
+
+    void PickANewTarget()
+    {
+        if (Player.players.Count > 0)
             target = Player.players[Random.Range(0, Player.players.Count)];
         else
             Debug.LogError("No Players To Target");
-
-        EventManager.OnArenaChange += FindBestOpenTile;
-        FindBestOpenTile();
     }
-
 
     public void RemoveLife(float pDamage)
     {
         life -= pDamage;
+        lifeSlider.value = life/origLife;
+
         if (life < 0)
             DestroyMonster();
     }
 
     private void DestroyMonster()
     {
-        
-    }
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        deathParticleSystem.Play();
+        isDead = true;
 
-
-    void OnDestroy()
-    {
         enemies.Remove(this);
+        collider.enabled = false;
         EventManager.OnArenaChange -= FindBestOpenTile;
     }
 
@@ -58,17 +67,20 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (GameModel.isPlaying)
+        if (GameModel.isPlaying && !isDead)
         {
             MoveEnemy();
             CheckIfCloseToEnemy();
         }
+
+        if(isDead && !deathParticleSystem.isPlaying)
+            Destroy(gameObject);
     }
 
     private void MoveEnemy()
     {
-        if (transform.position != targetTile.transform.position)
-            transform.position = Vector3.MoveTowards(transform.position, targetTile.transform.position,Time.deltaTime*speed);
+        if (rigidbody.position != targetTile.transform.position)
+            rigidbody.position = Vector3.MoveTowards(rigidbody.position, targetTile.transform.position, Time.deltaTime * speed);
         else
             FindBestOpenTile();
     }
@@ -106,8 +118,6 @@ public class Enemy : MonoBehaviour
         RaycastHit rchit;
         if (Physics.Raycast(pPos, Vector3.up, out rchit, 400))
         {
-            Debug.Log("Physics hit "+rchit.transform.name);
-
             Tile t = rchit.transform.GetComponentInParent<Tile>();
             if (t == null || t.isRisen) return;
 

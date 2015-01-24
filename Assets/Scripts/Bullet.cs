@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         origPos = transform.position;
-        damage = Random.Range(damageMin, damageMax);
+        damage = Random.Range(damageMin, damageMax) * (Random.value < 0.075f ? 2:1);
     }
 
     void Update()
