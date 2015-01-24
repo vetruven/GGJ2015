@@ -26,7 +26,6 @@ public class SpecialCounter : MonoBehaviour
         while (lastCount >= 0 && !killSpecialTimer)
         {
             EventManager.OSFMsg(lastCount.ToString());
-            Debug.Log("Special in " + lastCount);
             lastCount--;
             yield return new WaitForSeconds(1);
         }
@@ -49,7 +48,6 @@ public class SpecialCounter : MonoBehaviour
         while (lastCount >= 0 && !killSpecialTimer)
         {
             EventManager.OSFMsg(lastCount.ToString());
-            Debug.Log("Special Life " + lastCount);
             lastCount--;
             yield return new WaitForSeconds(1);
         }

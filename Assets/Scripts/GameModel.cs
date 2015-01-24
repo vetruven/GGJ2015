@@ -5,7 +5,7 @@ using System.Collections;
 public class GameModel : MonoBehaviour {
     public enum GameState{Menu, Intro, Game, WaveEnd, GameEnd}
     public static GameState state = GameState.Intro;
-    public int currWave = 0;
+    public static int currWave = 0;
 
 
     int introCount = 0;

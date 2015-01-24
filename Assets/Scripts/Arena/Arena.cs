@@ -14,11 +14,13 @@ public class Arena : MonoBehaviour
 
     public float crackWidth = 1;
 
-    public List<Tile> tiles; 
+    public static List<Tile> tiles; 
 
 
     void Awake()
     {
+        tiles = new List<Tile>();
+
         for (int z = 0; z < height; z++)
             for (int x = 0; x < width; x++)
                 CreateTile(x, z);
@@ -42,18 +44,7 @@ public class Arena : MonoBehaviour
     private void StartMapGeneration()
     {
         for (int i = 0; i < Random.Range(minWallCount, maxWallCount); i++)
-        {
-            int idx = Random.Range(0, tiles.Count);
-
-            int ppz = 0;
-            while (tiles[idx].isEmpty && ppz < 100)
-            {
-                idx = Random.Range(0, tiles.Count);
-                ppz++;
-            }
-            
-            tiles[idx].PullUp();
-        }
+            GetFreeTile().PullUp();
     }
 
 
@@ -63,4 +54,19 @@ public class Arena : MonoBehaviour
             tile.PullDown();
     }
 
+    public static Tile GetFreeTile()
+    {
+        int initIdx = Random.Range(0, tiles.Count);
+        int currIdx = (initIdx + 1) % tiles.Count;
+        while(currIdx != initIdx)
+        {
+            if (tiles[currIdx].isEmpty)
+                return tiles[currIdx];
+
+            currIdx = (currIdx + 1) % tiles.Count;
+        }
+
+        Debug.LogError("No Free Tile Found!");
+        return null;
+    }
 }

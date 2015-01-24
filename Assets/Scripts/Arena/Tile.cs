@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour
     public GameObject cap;
     public Vector2 coord;
     float speed = 40;
-    public bool isEmpty { get { return GetIsTaken(); } }
+    public bool isEmpty { get { return !GetIsTaken(); } }
 
 
     public bool isRisen = false; 
@@ -54,7 +54,7 @@ public class Tile : MonoBehaviour
 
     void OnGUI()
     {
-        Handles.Label(transform.position,isEmpty?"#":"-");
+        Handles.Label(transform.position,isEmpty?"-":"#");
     }
 
     private bool GetIsTaken()
@@ -64,6 +64,10 @@ public class Tile : MonoBehaviour
 
         foreach(var p in Player.players)
             if (Vector3.Distance(transform.position, p.transform.position) < 40)
+                return true;
+
+        foreach (var e in Enemy.enemies)
+            if (Vector3.Distance(transform.position, e.transform.position) < 20)
                 return true;
 
         return false;
