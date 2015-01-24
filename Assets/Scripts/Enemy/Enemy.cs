@@ -56,12 +56,15 @@ public class Enemy : MonoBehaviour
         graphicsBody.SetActive(false);
         deathParticleSystem.Play();
         isDead = true;
-        EventManager.EnemyExplode(transform.position, damage);
+        killME = false;
 
         enemies.Remove(this);
         collider.enabled = false;
         EventManager.OnArenaChange -= FindBestOpenTile;
         EventManager.OnPlayerExplode -= PickANewTarget;
+
+
+        EventManager.EnemyExplode(transform.position, damage);
     }
 
     private static List<Enemy> InitEnemies()

@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a018c53d878a546963d58878cb07d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interval: 5
+  nextUpdate: 0
 --- !u!114 &11435356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,7 +68,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 186768, guid: 7bdecd26c99f847ccb715eecfd55ceba, type: 2}
   minEnemiesPerWave: 2
   maxEnemiesPerWave: 8
-  waveintervals: 10
+  waveintervals: 8
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -830,7 +830,7 @@ MonoBehaviour:
   deathParticleSystem: {fileID: 103656, guid: 36dc491cd844a4cdbb592143b8c22517, type: 2}
   slider: {fileID: 11403374}
   playerName: Player2
-  moveSpeed: 50
+  moveSpeed: 65
   turnSpeed: 20
   life: 100
 --- !u!114 &11403366
@@ -848,7 +848,7 @@ MonoBehaviour:
   muzzles:
   - {fileID: 403376}
   - {fileID: 403368}
-  fireCooldown: .200000003
+  fireCooldown: .100000001
 --- !u!114 &11403368
 MonoBehaviour:
   m_ObjectHideFlags: 1
