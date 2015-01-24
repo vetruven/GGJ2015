@@ -111,6 +111,9 @@ public class Enemy : MonoBehaviour
 
         pos = transform.position + new Vector3(0, -200, -20);
         CheckTileGoodTomMove(pos);
+
+        if (targetTile != null)
+            transform.forward = (targetTile.transform.position - transform.position).normalized;
     }
 
     private void CheckTileGoodTomMove(Vector3 pPos)
