@@ -52,6 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 186768, guid: 7bdecd26c99f847ccb715eecfd55ceba, type: 2}
+  minEnemiesPerWave: 2
+  maxEnemiesPerWave: 8
+  waveintervals: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

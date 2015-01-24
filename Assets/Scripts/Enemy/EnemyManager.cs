@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
-            CreateEnemy();
+            StartWave();
 
         if(GameModel.isPlaying && nextWaveTime < Time.time)
             StartWave();
@@ -29,11 +29,29 @@ public class EnemyManager : MonoBehaviour
 
     private void StartWave()
     {
-        int enemeniestoCreate = Random.Range(minEnemiesPerWave, maxEnemiesPerWave+1);
+        int enemeniestoCreate;
+
+        switch (GameModel.currWave)
+        {
+            case 1:
+                enemeniestoCreate = 1;
+                break;
+            case 2:
+                enemeniestoCreate = 2;
+                break;
+            case 3:
+                enemeniestoCreate = 4;
+                break;
+            default:
+                enemeniestoCreate = Random.Range(minEnemiesPerWave, maxEnemiesPerWave+1);
+                break;
+        }
+
         for (int i = 0; i < enemeniestoCreate; i++)
             CreateEnemy();
 
         nextWaveTime = Time.time + waveintervals;
+        GameModel.currWave++;
         EventManager.WaveStart();
     }
 

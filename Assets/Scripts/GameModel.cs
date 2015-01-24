@@ -24,12 +24,22 @@ public class GameModel : MonoBehaviour {
     }
 
 
-    public static bool isPlaying { get { return state == GameState.Game || state == GameState.WaveEnd; } }
+    public static bool isPlaying { get
+    {
+        return state == GameState.Game || state == GameState.WaveEnd || state == GameState.Intro;
+    } }
 
     void Start()
     {
         StartCoroutine(CountDownIntro());
         EventManager.OnWaveFinish += FinishWave;
+        EventManager.OnPlayerExplode += CheckForGameEnd;
+    }
+
+    private void CheckForGameEnd()
+    {
+        if(Player.players.Count == 0)
+            state = GameState.GameEnd;
     }
 
     private IEnumerator CountDownIntro()
@@ -73,7 +83,6 @@ public class GameModel : MonoBehaviour {
             yield return new WaitForSeconds(1);
         }
 
-        currWave++;
         Debug.Log("Start Wave = "+currWave);
         EventManager.WaveStart();
         EventManager.ArenaChange();
