@@ -1,6 +1,7 @@
 ﻿using System.Runtime.Remoting.Channels;
 using UnityEngine;
-using UnityEditor;
+
+//using UnityEditor;
 
 public class Tile : MonoBehaviour
 {
