@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public float speed = 10f;
     public float life = 100;
     float origLife = 100;
+    public float damage = 30;
+
     public ParticleSystem deathParticleSystem;
     public Slider lifeSlider;
 
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour
         GetComponentInChildren<MeshRenderer>().enabled = false;
         deathParticleSystem.Play();
         isDead = true;
-        EventManager.EnemyExplode(transform.position);
+        EventManager.EnemyExplode(transform.position, damage);
 
         enemies.Remove(this);
         collider.enabled = false;

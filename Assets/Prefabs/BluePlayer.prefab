@@ -827,9 +827,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 103370}
   pelvis: {fileID: 103344}
+  slider: {fileID: 11403374}
   playerName: Player2
   moveSpeed: 50
   turnSpeed: 20
+  life: 100
 --- !u!114 &11403366
 MonoBehaviour:
   m_ObjectHideFlags: 1

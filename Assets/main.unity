@@ -567,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 65
   life: 80
+  damage: 30
   deathParticleSystem: {fileID: 2042413683}
   lifeSlider: {fileID: 1686422115}
   targetTile: {fileID: 0}
@@ -956,7 +957,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
+  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1090,7 +1091,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
+  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1313,9 +1314,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 1344749451}
   pelvis: {fileID: 446820905}
+  slider: {fileID: 1302110963}
   playerName: Player1
   moveSpeed: 50
   turnSpeed: 20
+  life: 100
 --- !u!54 &533539770
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1637,9 +1640,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 881238888}
   pelvis: {fileID: 1050326060}
+  slider: {fileID: 1663529345}
   playerName: Player2
   moveSpeed: 50
   turnSpeed: 20
+  life: 100
 --- !u!1 &805970466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2217,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
+  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2299,7 +2304,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 850399689410b42eca858c3b4782948f, type: 2}
+  - {fileID: 2100000, guid: bb1378740f516e0419f873f03ed581d6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

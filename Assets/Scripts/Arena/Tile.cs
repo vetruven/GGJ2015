@@ -54,7 +54,7 @@ public class Tile : MonoBehaviour
 
     void OnGUI()
     {
-        Handles.Label(transform.position,isEmpty?"-":"#");
+        //Handles.Label(transform.position,isEmpty?"-":"#");
     }
 
     private bool GetIsTaken()

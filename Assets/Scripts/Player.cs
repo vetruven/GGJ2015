@@ -1,14 +1,20 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public GameObject turret;
     public GameObject pelvis;
+    public Slider slider;
+
 
     public string playerName = "Player1";
     public float moveSpeed = 10;
     public float turnSpeed = 10;
+
+    public float life = 100;
+    private float origLife;
 
     private PlayerShooter playerShooter;
 
@@ -17,11 +23,25 @@ public class Player : MonoBehaviour
     void Awake()
     {
         playerShooter = GetComponent<PlayerShooter>();
-
+        origLife = life;
+        slider.value = life/origLife;
         if(players == null) 
             players = new List<Player>();
 
         players.Add(this);
+        EventManager.OnEnemyExplode += RecieveDamage;
+    }
+
+    void RecieveDamage(Vector3 pPos, float pDamage)
+    {
+        float dist = Vector3.Distance(transform.position, pPos);
+        if (dist <= 15)
+            life -= pDamage;
+
+        if (dist > 15 && dist <= 25)
+            life -= pDamage*(25 - dist)/10;
+        
+        slider.value = life / origLife;
     }
 
     void FixedUpdate()
@@ -29,6 +49,7 @@ public class Player : MonoBehaviour
         if (GameModel.isPlaying)
             GetInputForPlayer();
     }
+
 
     private void GetInputForPlayer()
     {
@@ -63,5 +84,6 @@ public class Player : MonoBehaviour
     void OnDestroy()
     {
         players.Remove(this);
+        EventManager.OnEnemyExplode -= RecieveDamage;
     }
 }
